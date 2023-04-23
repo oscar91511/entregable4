@@ -7,7 +7,7 @@ const UserCard = ({ user, deleteUser, handleClickEdit }) => {
         <img
           className="w-[100px] aspect-[3/5] object-cover
          mx-auto rounded-md"
-          src={user.image_url}
+          src={user.image_url ? user.image_url : "/images/no_profile.jpg"}
           alt="No image"
         />
       </div>
