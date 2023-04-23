@@ -5,8 +5,19 @@ import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import { useForm } from "react-hook-form";
 import UsersList from "./components/UsersList";
+import { data } from "autoprefixer";
 
 const BASE_URL = "https://users-crud.academlo.tech";
+
+const DEFAULT_VALUES = {
+  firt_name: "",
+  last_name: "",
+  email: "",
+  password: "",
+  birtday: "",
+  image_url: "",
+
+}
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -16,7 +27,11 @@ function App() {
   const { register, handleSubmit, reset } = useForm();
 
   const submit = (data) => {
-    createUser(data);
+    if(isUserIdToEdit){
+      editUser(data);
+    }else{
+      createUser(data);
+    }
   };
 
   const createUser = (data) => {
@@ -62,6 +77,19 @@ function App() {
     reset(data)
     setisUserIdToEdit(data.id)
   };
+
+  const editUser = (data) => {
+    const URL = BASE_URL + `/users/${isUserIdToEdit}/`;
+    axios
+      .patch(URL, data)
+      .then(() => {
+        getAllUsers();
+        reset(DEFAULT_VALUES);
+        setIsShowForm(!setIsShowForm);
+        setisUserIdToEdit();
+      })
+      .catch((err) => console.log(err));
+  }
 
   useEffect(() => {
     getAllUsers();
