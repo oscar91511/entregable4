@@ -1,16 +1,24 @@
 import React from 'react'
 
-const Modal = ({ isShowForm, handleSubmit, register, handleSubmitsubmit, setIsShowForm, submit }) => {
+const Modal = ({ isShowForm, handleSubmit, register, handleSubmitsubmit, setIsShowForm, submit, reset, setisUserIdToEdit, isUserIdToEdit }) => {
 
 const handleClickCloseModal = () => {
-    setIsShowForm((isShowForm) => !isShowForm)
-}
+    setIsShowForm((isShowForm) => !isShowForm);
+    reset({
+    firt_name: "",
+    last_name: "",
+    email: "",
+    password: "",
+    birtday: "",
+    image_url: "",});
+    setisUserIdToEdit()
+};
 
   return (
     <section className={`absolute top-0 left-0 bottom-0 
     right-0 bg-black/40 flex justify-center items-center transition-opasity ${isShowForm ? "opacity-100 visible" : "opacity-0 invisible"}`}>
         <form onSubmit={handleSubmit(submit)} className='w-[300px] relative bg-white p-4 grid gap-4'>
-            <h3 className='text-2xl font-bold'>Nuevo Usuario</h3>
+            <h3 className='text-2xl font-bold'>{isUserIdToEdit ? "Editar Usuario" : "Nuevo Usuario"}</h3>
             <div className='grid gap-1'>
                 <label className='text-xs font-semibold '  htmlFor="first_name">Nombre</label>
                 <input className='border-[1px] rounded-sm bg-gray-100 p-1'  id="first_name" type="text" 
@@ -44,7 +52,7 @@ const handleClickCloseModal = () => {
             <i onClick={handleClickCloseModal} className='bx bx-x absolute top-2 right-2 
             text-2xl hover:text-red-500 cursor-pointer'></i>
             <button className='bg-purple-p text-white p-2 hover:bg-purple-p/80
-             transition-colors text-sm'>Agregar Nuevo Usuario</button>
+             transition-colors text-sm'>{isUserIdToEdit ? "Guardar Cambios": "Agregar Nuevo Usuario"}</button>
         </form>
     </section>
   )

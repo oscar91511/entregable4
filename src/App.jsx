@@ -10,6 +10,7 @@ const BASE_URL = "https://users-crud.academlo.tech";
 
 function App() {
   const [users, setUsers] = useState([]);
+  const [isUserIdToEdit, setisUserIdToEdit ] = useState()
   const [isShowForm, setIsShowForm] = useState(false);
 
   const { register, handleSubmit, reset } = useForm();
@@ -59,7 +60,8 @@ function App() {
   const handleClickEdit = (data) => {
     setIsShowForm((isShowForm) => !isShowForm) //se setea el estado con funcion callback/estado verdadero falso y estado en negacion verdadero
     reset(data)
-  }
+    setisUserIdToEdit(data.id)
+  };
 
   useEffect(() => {
     getAllUsers();
@@ -72,6 +74,9 @@ function App() {
         isShowForm={isShowForm}
         setIsShowForm={setIsShowForm}
         submit={submit}
+        reset={reset}
+        setisUserIdToEdit={setisUserIdToEdit}
+        isUserIdToEdit={isUserIdToEdit}
       />
       <Header setIsShowForm={setIsShowForm} />
       <UsersList users={users} deleteUser={deleteUser} handleClickEdit={handleClickEdit} />
