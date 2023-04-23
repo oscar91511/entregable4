@@ -4,18 +4,20 @@ const UserCard = ({user}) => {
   return (
     <article>
       <div>
-        <img src="{user.image_url}" alt="" />
+        <img className='w-[100px] aspect-[3/5] object-cover mx-auto rounded-md' src={user.image_url} alt="" />
       </div>
-      <h3></h3>
+      <h3>{user.first_name} {user.last_name}</h3>
       <ul>
         <li>
           <h4>correo</h4>
-          <span></span>
+          <span>{user.email}</span>
         </li>
         <li>
           <h4>Cumpleaños</h4>
-          <span></span>
-          <i className="bx bx-gift"></i>
+          <span>
+            <i className="bx bx-gift"></i>
+              {user.birthday}
+          </span>
         </li>
       </ul>
       <div>
