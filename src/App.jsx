@@ -24,7 +24,7 @@ function App() {
   const [isUserIdToEdit, setisUserIdToEdit ] = useState()
   const [isShowForm, setIsShowForm] = useState(false);
 
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset, formState: {errors} } = useForm();
 
   const submit = (data) => {
     if(!data.birthday){
@@ -113,6 +113,7 @@ function App() {
         reset={reset}
         setisUserIdToEdit={setisUserIdToEdit}
         isUserIdToEdit={isUserIdToEdit}
+        errors={errors}
       />
       <Header setIsShowForm={setIsShowForm} />
       <UsersList users={users} deleteUser={deleteUser} handleClickEdit={handleClickEdit} />

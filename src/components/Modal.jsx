@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Modal = ({ isShowForm, handleSubmit, register, handleSubmitsubmit, setIsShowForm, submit, reset, setisUserIdToEdit, isUserIdToEdit }) => {
+const Modal = ({ isShowForm, handleSubmit, register, handleSubmitsubmit, setIsShowForm, submit, reset, setisUserIdToEdit, isUserIdToEdit, errors }) => {
 
 const handleClickCloseModal = () => {
     setIsShowForm((isShowForm) => !isShowForm);
@@ -47,7 +47,13 @@ const handleClickCloseModal = () => {
             <div className='grid gap-1'>
                 <label className='text-xs font-semibold ' htmlFor="image_url">URL</label>
                 <input className='border-[1px] rounded-sm bg-gray-100 p-1'  id="image_url" type="text"  
-                {...register("image_url")} />
+                {...register("image_url",{
+                    pattern: {
+                        value: /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png|jpg)/,
+                        message: " El formato de URL es no valida"
+                    }
+                })} />
+                <span>{errors.image_url && errors.image_url.message}</span>
             </div>
             <i onClick={handleClickCloseModal} className='bx bx-x absolute top-2 right-2 
             text-2xl hover:text-red-500 cursor-pointer'></i>
