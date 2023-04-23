@@ -15,7 +15,7 @@ const handleClickCloseModal = () => {
 };
 
   return (
-    <section className={`absolute top-0 left-0 bottom-0 
+    <section className={`fixed top-0 left-0 bottom-0 
     right-0 bg-black/40 flex justify-center items-center transition-opasity ${isShowForm ? "opacity-100 visible" : "opacity-0 invisible"}`}>
         <form onSubmit={handleSubmit(submit)} className='w-[300px] relative bg-white p-4 grid gap-4'>
             <h3 className='text-2xl font-bold'>{isUserIdToEdit ? "Editar Usuario" : "Nuevo Usuario"}</h3>
