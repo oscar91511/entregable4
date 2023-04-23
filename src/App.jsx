@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import { useForm } from "react-hook-form";
 import UsersList from "./components/UsersList";
-import { data } from "autoprefixer";
+
 
 const BASE_URL = "https://users-crud.academlo.tech";
 
@@ -27,6 +27,14 @@ function App() {
   const { register, handleSubmit, reset } = useForm();
 
   const submit = (data) => {
+    if(!data.birthday){
+      data.birthday = null;
+    }
+
+    if(!data.image_url) {
+      data.image_url = null;
+    }
+
     if(isUserIdToEdit){
       editUser(data);
     }else{

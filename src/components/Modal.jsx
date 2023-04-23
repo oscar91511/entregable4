@@ -20,22 +20,22 @@ const handleClickCloseModal = () => {
         <form onSubmit={handleSubmit(submit)} className='w-[300px] relative bg-white p-4 grid gap-4'>
             <h3 className='text-2xl font-bold'>{isUserIdToEdit ? "Editar Usuario" : "Nuevo Usuario"}</h3>
             <div className='grid gap-1'>
-                <label className='text-xs font-semibold '  htmlFor="first_name">Nombre</label>
+                <label className='text-xs font-semibold '  htmlFor="first_name">Nombre</label> <span className='text-red-500'>*</span>
                 <input className='border-[1px] rounded-sm bg-gray-100 p-1'  id="first_name" type="text" 
                 {...register("first_name")} />
             </div>
             <div className='grid gap-1'>
-                <label className='text-xs font-semibold ' htmlFor="last_name">Apellidos</label>
+                <label className='text-xs font-semibold ' htmlFor="last_name">Apellidos</label>  <span className='text-red-500'>*</span>
                 <input className='border-[1px] rounded-sm bg-gray-100 p-1'  id="last_name" type="text" 
                 {...register("last_name")} />
             </div>
             <div className='grid gap-1'>
-                <label className='text-xs font-semibold ' htmlFor="email">Correo</label>
+                <label className='text-xs font-semibold ' htmlFor="email">Correo</label>  <span className='text-red-500'>*</span>
                 <input className='border-[1px] rounded-sm bg-gray-100 p-1'  id="email" type="text"  
                 {...register("email")}/>
             </div>
             <div className='grid gap-1'>
-                <label className='text-xs font-semibold ' htmlFor="password">Contraseña</label>
+                <label className='text-xs font-semibold ' htmlFor="password">Contraseña</label>  <span className='text-red-500'>*</span>
                 <input className='border-[1px] rounded-sm bg-gray-100 p-1'  id="password" type="password" 
                 {...register("password")} />
             </div>
