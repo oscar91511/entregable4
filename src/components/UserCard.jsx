@@ -1,12 +1,19 @@
-import React from 'react'
+import React from "react";
 
-const UserCard = ({user}) => {
+const UserCard = ({ user, deleteUser, handleClickEdit }) => {
   return (
     <article>
       <div>
-        <img className='w-[100px] aspect-[3/5] object-cover mx-auto rounded-md' src={user.image_url} alt="" />
+        <img
+          className="w-[100px] aspect-[3/5] object-cover
+         mx-auto rounded-md"
+          src={user.image_url}
+          alt="No image"
+        />
       </div>
-      <h3>{user.first_name} {user.last_name}</h3>
+      <h3>
+        {user.first_name} {user.last_name}
+      </h3>
       <ul>
         <li>
           <h4>correo</h4>
@@ -16,18 +23,20 @@ const UserCard = ({user}) => {
           <h4>Cumpleaños</h4>
           <span>
             <i className="bx bx-gift"></i>
-              {user.birthday}
+            {user.birthday}
           </span>
         </li>
       </ul>
       <div>
-        <button>
+        <button onClick={() => deleteUser(user.id)}>
           <i className="bx bx-trash"></i>
         </button>
-        <i className="bx bxs-pencil"></i>
+        <button onClick={() => handleClickEdit(user)}>
+          <i className="bx bxs-pencil"></i>
+        </button>
       </div>
     </article>
-  )
-}
+  );
+};
 
-export default UserCard
+export default UserCard;

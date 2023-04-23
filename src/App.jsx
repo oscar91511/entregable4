@@ -9,36 +9,44 @@ import UsersList from "./components/UsersList";
 const BASE_URL = "https://users-crud.academlo.tech";
 
 function App() {
-  const [users, setUsers] = useState([])
-  const [isShowForm, setIsShowForm] = useState(false)
+  const [users, setUsers] = useState([]);
+  const [isShowForm, setIsShowForm] = useState(false);
 
-  const {register, handleSubmit, reset} = useForm()
+  const { register, handleSubmit, reset } = useForm();
 
   const submit = (data) => {
-    createUser(data)
-
-  }
+    createUser(data);
+  };
 
   const createUser = (data) => {
-    const URL = BASE_URL + "/users/"
+    const URL = BASE_URL + "/users/";
 
     axios
-    .post(URL, data)
-    .then (() => {
-      getAllUsers()
-      reset({
-        firt_name: "",
-        last_name: "",
-        email: "",
-        password: "",
-        birtday: "",
-        image_url: "",
+      .post(URL, data)
+      .then(() => {
+        getAllUsers();
+        reset({
+          firt_name: "",
+          last_name: "",
+          email: "",
+          password: "",
+          birtday: "",
+          image_url: "",
+        });
+        setIsShowForm(!isShowForm);
       })
-      setIsShowForm(!isShowForm)
-    })
-    .catch ((err) => console.log(err))
-  }
- 
+      .catch((err) => console.log(err));
+  };
+
+  const deleteUser = (id) => {
+    const URL = BASE_URL + `/users/${id}/`;
+
+    axios
+      .delete(URL)
+      .then(() => getAllUsers())
+      .catch((err) => console.log(err));
+  };
+
   const getAllUsers = () => {
     const URL = BASE_URL + "/users/";
 
@@ -48,23 +56,27 @@ function App() {
       .catch((err) => console.log(err));
   };
 
+  const handleClickEdit = (data) => {
+    setIsShowForm((isShowForm) => !isShowForm) //se setea el estado con funcion callback/estado verdadero falso y estado en negacion verdadero
+    reset(data)
+  }
+
   useEffect(() => {
     getAllUsers();
   }, []);
   return (
     <main className="font-sans">
-
-      <Modal register={register} 
-      handleSubmit={handleSubmit} 
-      isShowForm={isShowForm} 
-      setIsShowForm={setIsShowForm}
-      submit={submit} />
-      <Header setIsShowForm={setIsShowForm}/>
-      <UsersList users={users}/>
-
-
+      <Modal
+        register={register}
+        handleSubmit={handleSubmit}
+        isShowForm={isShowForm}
+        setIsShowForm={setIsShowForm}
+        submit={submit}
+      />
+      <Header setIsShowForm={setIsShowForm} />
+      <UsersList users={users} deleteUser={deleteUser} handleClickEdit={handleClickEdit} />
     </main>
-  )
+  );
 }
 
 export default App;
