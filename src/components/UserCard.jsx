@@ -4,7 +4,7 @@ const UserCard = ({ user, deleteUser, handleClickEdit }) => {
 
   return (
     
-    <article className="border-2 p-2 ">
+    <article className="border-2 rounded-[4px] p-2 ">
     <article className=" grid justify-center rounded-[4px] p-4 ">
       <div>
         <img
@@ -35,7 +35,7 @@ const UserCard = ({ user, deleteUser, handleClickEdit }) => {
     </article>
     
     <div class=" flex gap-2 justify-end ">
-    <button className=" border-1 px-2 h-[30px] rounded-[4px] text-white bg-red-400 " onClick={() => deleteUser(user.id)}>
+    <button className=" border-1  px-2 h-[30px] rounded-[4px] text-white bg-red-400 " onClick={() => deleteUser(user.id)}>
       <i className=" bx bx-trash"></i>
     </button>
     <button className=" border-2  px-2 h-[30px] rounded-[4px] border-gray-300 text-gray-200 bg-gray-100  " onClick={() => handleClickEdit(user)}>

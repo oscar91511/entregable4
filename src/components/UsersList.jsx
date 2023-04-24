@@ -7,7 +7,7 @@ const UsersList = ({ users, deleteUser, handleClickEdit }) => {
       className=" "
     >
       <div className=" grid  gap-10 auto-rows-auto 
-    grid-cols-[repeat(auto-fill,_310px)] justify-center ">{users.map((user) => (
+         grid-cols-[repeat(auto-fill,_310px)] justify-center ">{users.map((user) => (
         <UserCard key={user.id} user={user} deleteUser={deleteUser}
         handleClickEdit={handleClickEdit} />
       ))} </div>
