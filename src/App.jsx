@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import { useForm } from "react-hook-form";
 import UsersList from "./components/UsersList";
+import Swal from 'sweetalert2';
 
 const BASE_URL = "https://users-crud.academlo.tech";
 
@@ -50,7 +51,7 @@ function App() {
 
     axios
       .post(URL, data)
-      .then(() => {
+      .then(() =>  {
         getAllUsers();
         reset({
           firt_name: "",
@@ -61,6 +62,13 @@ function App() {
           image_url: "",
         });
         setIsShowForm(!isShowForm);
+        Swal.fire({
+          position: 'top-center',
+          icon: 'success',
+          title: 'register complete',
+          showConfirmButton: false,
+          timer: 1500
+        })
       })
       .catch((err) => console.log(err));
   };
@@ -71,6 +79,13 @@ function App() {
     axios
       .delete(URL)
       .then(() => getAllUsers())
+      Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: 'delete complete',
+        showConfirmButton: false,
+        timer: 1500
+      })
       .catch((err) => console.log(err));
   };
 
@@ -94,6 +109,13 @@ function App() {
     axios
       .patch(URL, data)
       .then(() => {
+        Swal.fire({
+          position: 'top-center',
+          icon: 'success',
+          title: 'Edict complete',
+          showConfirmButton: false,
+          timer: 1500
+        })
         getAllUsers();
         reset(DEFAULT_VALUES);
         setIsShowForm(!setIsShowForm);
@@ -107,7 +129,7 @@ function App() {
   }, []);
 
   return (
-    <main className="font-sans bg-[url(/images/bg-4.jpg)] bg-cover min-h-screen">
+    <main className="font-sans bg-[url(/images/bw1.webp)] bg-cover min-h-screen">
       <Modal
         register={register}
         handleSubmit={handleSubmit}

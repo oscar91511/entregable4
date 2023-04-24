@@ -2,7 +2,7 @@ import React from "react";
 
 const UserCard = ({ user, deleteUser, handleClickEdit }) => {
   return (
-    <article className="border-[2px] ">
+    <article className="border-[2px] rounded-[4px]">
       <div className="">
         <img
           className="w-[100px] aspect-[3/5] object-cover py-2 mx-auto  "
