@@ -9,6 +9,9 @@ export default {
       colors: {
         "purple-p": "#555A88",
         "red-p": "#D85D5E"
+      },
+      fontFamily: {
+        roboto: "roboto, sans-serif"
       }
     },
   },
