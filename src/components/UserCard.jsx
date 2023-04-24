@@ -1,48 +1,48 @@
 import React from "react";
 
 const UserCard = ({ user, deleteUser, handleClickEdit }) => {
-
   return (
-    
-    <article className="border-2 rounded-[4px] p-2 ">
-    <article className=" grid justify-center rounded-[4px] p-4 ">
-      <div>
+    <article className="border-[2px] ">
+      <div className="">
         <img
-          className=" w-[100px]  aspect-[3/5] object-cover
-         mx-auto rounded-md"
-          src={user.image_url ? user.image_url : "/images/no_profile.jpg"}
-          alt="No image"
+          className="w-[100px] aspect-[3/5] object-cover py-2 mx-auto  "
+          src={user.image_url ? user.image_url : "/images/noImage.jpg"}
+          alt="User image"
         />
       </div>
-      <h3 className=" grid text-[16px] font-roboto py-3 font-bold  top-[243px] text-[rgba(15,15,45,1)]">
+      <h3 className="font-bold px-2">
         {user.first_name} {user.last_name}
+        <hr />
       </h3>
-      <ul>
+      <ul className="text-bold">
         <li>
-          <h4 className="uppercase text-gray-600 font-bold text-[15px]">correo</h4>
-          <span className="text-[15px]">{user.email}</span>
+          <h4 className="text-[#D3D3D3] text-sm px-2">CORREO</h4>
+          <span className="text-sm font-semibold px-2">{user.email}</span>
         </li>
         <li>
-          <h4 className="uppercase font-bold pt-4 text-gray-600">Cumpleaños</h4>
-          <span className="bx py-1 tracking-wider bx-gift">
-            <i className="px-0.5" ></i>
+          <h4 className="text-[#D3D3D3] px-2">Cumpleaños</h4>
+          <span className="text-sm">
+            <i className="bx bx-gift px-2"></i>
             {user.birthday}
+            <hr className="w-[230px] mx-auto items-center justify-center" />
           </span>
         </li>
       </ul>
-      
-      
+      <div className="flex justify-end gap-2 px-2 py-4 ">
+        <button
+          className=" w-8  text-white rounded-[4px] bg-red-500 border-[2px]"
+          onClick={() => deleteUser(user.id)}
+        >
+          <i className="bx bx-trash text-md  "></i>
+        </button>
+        <button
+          className="bg-[#BDBDBD] rounded-[4px]  border-[2px] text-white w-8"
+          onClick={() => handleClickEdit(user)}
+        >
+          <i className="bx bxs-pencil  "></i>
+        </button>
+      </div>
     </article>
-    
-    <div class=" flex gap-2 justify-end ">
-    <button className=" border-1  px-2 h-[30px] rounded-[4px] text-white bg-red-400 " onClick={() => deleteUser(user.id)}>
-      <i className=" bx bx-trash"></i>
-    </button>
-    <button className=" border-2  px-2 h-[30px] rounded-[4px] border-gray-300 text-gray-200 bg-gray-100  " onClick={() => handleClickEdit(user)}>
-      <i className=" text-gray-400 bx  bxs-pencil"></i>
-    </button>
-  </div>
-  </article>
   );
 };
 

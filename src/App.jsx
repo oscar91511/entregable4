@@ -6,7 +6,6 @@ import Header from "./components/Header";
 import { useForm } from "react-hook-form";
 import UsersList from "./components/UsersList";
 
-
 const BASE_URL = "https://users-crud.academlo.tech";
 
 const DEFAULT_VALUES = {
@@ -16,28 +15,32 @@ const DEFAULT_VALUES = {
   password: "",
   birtday: "",
   image_url: "",
-
-}
+};
 
 function App() {
   const [users, setUsers] = useState([]);
-  const [isUserIdToEdit, setisUserIdToEdit ] = useState()
+  const [isUserIdToEdit, setisUserIdToEdit] = useState();
   const [isShowForm, setIsShowForm] = useState(false);
 
-  const { register, handleSubmit, reset, formState: {errors} } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
   const submit = (data) => {
-    if(!data.birthday){
+    if (!data.birthday) {
       data.birthday = null;
     }
 
-    if(!data.image_url) {
+    if (!data.image_url) {
       data.image_url = null;
     }
 
-    if(isUserIdToEdit){
+    if (isUserIdToEdit) {
       editUser(data);
-    }else{
+    } else {
       createUser(data);
     }
   };
@@ -81,9 +84,9 @@ function App() {
   };
 
   const handleClickEdit = (data) => {
-    setIsShowForm((isShowForm) => !isShowForm) //se setea el estado con funcion callback/estado verdadero falso y estado en negacion verdadero
-    reset(data)
-    setisUserIdToEdit(data.id)
+    setIsShowForm((isShowForm) => !isShowForm); //se setea el estado con funcion callback/estado verdadero falso y estado en negacion verdadero
+    reset(data);
+    setisUserIdToEdit(data.id);
   };
 
   const editUser = (data) => {
@@ -97,11 +100,12 @@ function App() {
         setisUserIdToEdit();
       })
       .catch((err) => console.log(err));
-  }
+  };
 
   useEffect(() => {
     getAllUsers();
   }, []);
+
   return (
     <main className="font-sans bg-[url(/images/bg-4.jpg)] bg-cover min-h-screen">
       <Modal
@@ -116,7 +120,37 @@ function App() {
         errors={errors}
       />
       <Header setIsShowForm={setIsShowForm} />
-      <UsersList users={users} deleteUser={deleteUser} handleClickEdit={handleClickEdit} />
+      <UsersList
+        users={users}
+        deleteUser={deleteUser}
+        handleClickEdit={handleClickEdit}
+      />
+      <footer className="flex gap-2 p-4 justify-center">
+        <a
+          className="text-4xl"
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://github.com/oscar91511/entregable4"
+        >
+          <i className="bx bxl-github "></i>
+        </a>
+        <a
+          className="text-4xl"
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.linkedin.com/in/oscar-eduardo-lopez-restrepo-968a91265/"
+        >
+          <i className="bx bxl-linkedin "></i>
+        </a>
+        <a
+          className="text-4xl"
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.instagram.com/oscar915lr/"
+        >
+          <i className="bx bxl-instagram"></i>
+        </a>
+      </footer>
     </main>
   );
 }
