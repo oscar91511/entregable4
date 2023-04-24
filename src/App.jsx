@@ -103,7 +103,7 @@ function App() {
     getAllUsers();
   }, []);
   return (
-    <main className="font-sans">
+    <main className="font-sans ">
       <Modal
         register={register}
         handleSubmit={handleSubmit}
