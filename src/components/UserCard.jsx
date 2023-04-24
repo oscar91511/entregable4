@@ -19,11 +19,11 @@ const UserCard = ({ user, deleteUser, handleClickEdit }) => {
       </h3>
       <ul>
         <li>
-          <h4 className="uppercase text-gray-300 font-bold text-[15px]">correo</h4>
+          <h4 className="uppercase text-gray-600 font-bold text-[15px]">correo</h4>
           <span className="text-[15px]">{user.email}</span>
         </li>
         <li>
-          <h4 className="uppercase font-bold pt-4 text-gray-300">Cumpleaños</h4>
+          <h4 className="uppercase font-bold pt-4 text-gray-600">Cumpleaños</h4>
           <span className="bx py-1 tracking-wider bx-gift">
             <i className="px-0.5" ></i>
             {user.birthday}

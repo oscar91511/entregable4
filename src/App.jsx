@@ -103,7 +103,7 @@ function App() {
     getAllUsers();
   }, []);
   return (
-    <main className="font-sans ">
+    <main className="font-sans bg-[url(/images/bg-4.jpg)] bg-cover min-h-screen">
       <Modal
         register={register}
         handleSubmit={handleSubmit}
