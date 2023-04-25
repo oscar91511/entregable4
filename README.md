@@ -2,7 +2,7 @@
 
 ## Crud And Data Base
 
-* on this is Data Base you can do: *
+*on this is Data Base you can do: *
 
 - #### Register Users
 - #### Edit Users
@@ -17,8 +17,8 @@ the sections create for user are:
 - #### Birthday
 - #### URL Image
 
-* the first 4 sections are required fields the Birthday and URL Image not are required. *
+*the first 4 sections are required fields the Birthday and URL Image not are required. *
 
-[](https://github.com/oscar91511/entregable4)
+[entregable4/Crud_Data_Base](http://https://github.com/oscar91511/entregable4 "entregable4/Crud_Data_Base")
 
-![screamshot]("https://ibb.co/6mQN4w9"><img src="https://i.ibb.co/mGpSHTZ/crub-data-base.png" alt="crub-data-base" border="0")
+![Crud Data Base](https://i.ibb.co/mGpSHTZ/crub-data-base.png)
